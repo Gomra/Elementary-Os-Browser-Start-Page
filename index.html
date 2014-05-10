@@ -2,8 +2,38 @@
 <html>
     <head>
         <title>Start - Elementary OS</title>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <script>
+            function updateClock(){
+              var currentTime = new Date ( );
+
+              var currentHours = currentTime.getHours ( );
+              var currentMinutes = currentTime.getMinutes ( );
+              var currentSeconds = currentTime.getSeconds ( );
+
+              // Pad the minutes and seconds with leading zeros, if required
+              currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+              currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+              // Choose either "AM" or "PM" as appropriate
+              var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+              // Convert the hours component to 12-hour format if needed
+              currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+              // Convert an hours component of "0" to "12"
+              currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+              // Compose the string for display
+              var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+              // Update the time display
+              document.getElementById("clock").innerHTML = currentTimeString;
+            }
+        </script>
         <style>
+
+            @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300);@import url(http://fonts.googleapis.com/css?family=Vollkorn);@import url(http://fonts.googleapis.com/css?family=Droid+Sans);@import url(http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,600,500,300,200,100);
+
             body{
                 margin:0;
                 padding:0;
@@ -14,43 +44,69 @@
                 position:fixed;
                 top:50%;
                 left:50%;
-                height:400px;
+                height:300px;
                 width:600px;
                 margin-left:-300px;
-                margin-top:-200px;
+                margin-top:-150px;
+            }
+
+            .input{
+                border:0px solid black;
+                outline:none;
+                -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
+                animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
             }
 
             .search{
-                border:0px solid black;
-                border-bottom:5px solid #ddd;
-                outline:none;
-                width:80%;
+                width:100%;
                 font-size:20pt;
-                background:#eee;
                 padding-left:5px;
+                background:rgba(0,0,0,0);
+                color:#4D4D4D;
                 -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
                 -moz-box-sizing: border-box;    /* Firefox, other Gecko */
                 box-sizing: border-box;         /* Opera/IE 8+ */
-                box-shadow:0px 0px 5px 0px #888;
+            }
+
+            .clock{
+                font-size:105px;
+                font-family:Raleway,"Droid Sans",Arial,sans-serif;
+                font-weight:100;
+                color:#4D4D4D;
                 -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
                 animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
             }
 
-            .search-button{
-                border:0px solid black;
-                border-bottom:5px solid #2980B9;
-                background:#3498DB;
-                font-size:20pt;
-                color:white;
+            form{
+                width:100%;
+                display:inline-flex;
+                border:1px solid #ddd;
+                border-radius:3px;
+                -webkit-box-shadow:inset 0 0 20px 1px #EBEBEB;
+                box-shadow:inset 0 0 20px 1px #EBEBEB;
+                -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
+                animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
+            }
+
+            .links{
+                width:100%;
+                padding:0;
+                height:30px;
+                
+            }
+
+            .link{
+                list-style: none;
+                display: inline;
                 width:20%;
-                box-shadow:0px 0px 5px 0px #888;
+                float:left;
                 -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
                 animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
             }
 
-            .eOS-Logo{
-                -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
-                animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
+            a{
+                color:#4D4D4D;
+                text-decoration: none;
             }
 
             @keyframes animationFrames{
@@ -84,10 +140,19 @@
             }
         </style>
     </head>
-    <body>
-        <div class="center">
-            <img src="eos.png" width="100%" class="eOS-Logo"/>
-            <input class="search"><button class="search-button">Search</button>
+    <body onload="updateClock(); setInterval('updateClock()', 1000 )">
+        <div class="center" align="center">
+            <div class="clock" id="clock"></div>
+            <div class="links">
+                <div class="link"><a href="http://elementaryos.org">Home</a></div>
+                <div class="link"><a href="http://elementaryos.org/journal">Journal</a></div>
+                <div class="link"><a href="http://elementaryos.org/support">Support</a></div>
+                <div class="link"><a href="http://elementaryos.org/developer">Developers</a></div>
+                <div class="link"><a href="https://squareup.com/market/elementary-llc">Store</a></div>
+            </div>
+            <form action="http://www.google.com/search" method="get">
+                <input name="q" class="input search">
+            </form>
         </div>
     </body>
 </html>
