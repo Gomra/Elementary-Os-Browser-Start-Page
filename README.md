@@ -1,4 +1,5 @@
-Elementary-Os-Browser-Start-Page
+Elementary OS Start Page
 ================================
 
-My submission for the eOS start page
+Hullo!
+This is a start page intended for the elementary OS team to put as the default home page in midori.
