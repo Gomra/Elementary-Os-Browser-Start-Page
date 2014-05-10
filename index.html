@@ -32,6 +32,8 @@
                 -moz-box-sizing: border-box;    /* Firefox, other Gecko */
                 box-sizing: border-box;         /* Opera/IE 8+ */
                 box-shadow:0px 0px 5px 0px #888;
+                -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
+                animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
             }
 
             .search-button{
@@ -42,6 +44,43 @@
                 color:white;
                 width:20%;
                 box-shadow:0px 0px 5px 0px #888;
+                -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
+                animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
+            }
+
+            .eOS-Logo{
+                -webkit-animation: animationFrames 0.6s ease-in-out; /* Chrome, Safari, Opera */
+                animation: animationFrames 0.6s ease-in-out; /* Standard syntax */
+            }
+
+            @keyframes animationFrames{
+              0% {
+                left:0px;
+                margin-top:25px;
+                opacity:0;
+                transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+              }
+              101% {
+                left:0px;
+                margin-top:0px;
+                opacity:1;
+                transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+              }
+            }
+
+            @-webkit-keyframes animationFrames {
+              0% {
+                left:0px;
+                margin-top:25px;
+                opacity:0;
+                -webkit-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+              }
+              101% {
+                left:0px;
+                margin-top:0px;
+                opacity:1;
+                -webkit-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+              }
             }
         </style>
     </head>
